@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\EventCategoryResource\Pages;
 use App\Filament\Resources\EventCategoryResource\RelationManagers;
 use App\Filament\Roles;
+use App\Models\EventCategory;
 use Filament\Resources\Forms\Components;
 use Filament\Resources\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,7 +16,7 @@ use Filament\Resources\Tables\Table;
 class EventCategoryResource extends Resource
 {
     public static $icon = 'heroicon-o-collection';
-
+    public static $model = EventCategory::class;
     public static function form(Form $form)
     {
         return $form
@@ -51,6 +52,7 @@ class EventCategoryResource extends Resource
             Pages\ListEventCategories::routeTo('/', 'index'),
             Pages\CreateEventCategory::routeTo('/create', 'create'),
             Pages\EditEventCategory::routeTo('/{record}/edit', 'edit'),
+            Pages\SortEventCategory::routeTo('/sort', 'sort'),
         ];
     }
 
