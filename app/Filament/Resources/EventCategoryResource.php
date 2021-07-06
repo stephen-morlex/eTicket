@@ -15,7 +15,7 @@ use Filament\Resources\Tables\Table;
 
 class EventCategoryResource extends Resource
 {
-    public static $icon = 'heroicon-o-collection';
+    public static $icon = 'heroicon-o-tag';
     public static $model = EventCategory::class;
     public static function form(Form $form)
     {

@@ -13,7 +13,9 @@
         "laravel/framework": "^8.4",
         "laravel/tinker": "^2.5",
         "league/glide-laravel": "^1.0",
-        "spatie/laravel-sluggable": "^3.1"
+        "spatie/laravel-responsecache": "^7.1",
+        "spatie/laravel-sluggable": "^3.1",
+        "ylsideas/feature-flags": "^1.4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

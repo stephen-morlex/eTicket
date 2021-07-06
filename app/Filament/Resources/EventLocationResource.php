@@ -14,13 +14,21 @@ use Filament\Resources\Tables\Table;
 
 class EventLocationResource extends Resource
 {
-    public static $icon = 'heroicon-o-collection';
+    public static $icon = 'heroicon-o-location-marker';
 
     public static function form(Form $form)
     {
         return $form
             ->schema([
-                //
+                Components\TextInput::make('name')->autofocus()->required()->placeholder('Enter Name of the location...'),
+                Components\TextInput::make('lat')->autofocus()->type('number')->placeholder('Enter latitude of the location...'),
+                Components\TextInput::make('lng')->autofocus()->type('number')->placeholder('Enter longitude of the location...'),
+                Components\Toggle::make('is_active')
+                    ->autofocus() // Autofocus the field.
+                    ->inline() // Render the toggle inline with its label.
+                    // ->offIcon($icon) // Set the icon that should be displayed when the toggle is off.
+                    // ->onIcon($icon) // Set the icon that should be displayed when the toggle is on.
+                    ->stacked(),
             ]);
     }
 
@@ -28,7 +36,10 @@ class EventLocationResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Columns\Text::make('name')->primary()->searchable()->sortable(),
+                Columns\Text::make('lat')->label('Latitude')->primary(),
+                Columns\Text::make('lng')->label('Longitude')->primary(),
+                Columns\Boolean::make('is_active')->label('Status'),
             ])
             ->filters([
                 //

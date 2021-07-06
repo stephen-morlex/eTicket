@@ -14,7 +14,7 @@ use Filament\Resources\Tables\Table;
 
 class EventTypeResource extends Resource
 {
-    public static $icon = 'heroicon-o-collection';
+    public static $icon = 'heroicon-o-bookmark';
 
     public static function form(Form $form)
     {
