@@ -48,7 +48,7 @@ class EventResource extends Resource
                 Columns\Text::make('date')->dateTime($format = ' j F, Y')->primary(),
                 // Columns\Column::make('category.name'),
                 // Columns\Column::make('location.name'),
-                Columns\Column::make('type.name'),
+                // Columns\Column::make('type.name'),
                 Columns\Boolean::make('is_active')->label('Status'),
                 Columns\Boolean::make('is_feature')->label('Featured'),
                 Columns\Boolean::make('is_trending')->label('Trending'),
