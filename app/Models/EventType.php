@@ -13,6 +13,12 @@ class EventType extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
+
     /**
      * Get the options for generating the slug.
      */

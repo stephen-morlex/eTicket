@@ -18,9 +18,36 @@ class Event extends Model
         'event_category_id',
         'event_type_id',
         'event_location_id',
-        'date'
+        'date',
+        'is_featured',
+        'is_trending',
+        'poster',
+        'banner',
     ];
 
+    /**
+     * Relationships Models
+     */
+    public function organizer()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function category()
+    {
+        return $this->belongsTo(EventCategory::class);
+    }
+    public function location()
+    {
+        return $this->belongsTo(EventLocation::class);
+    }
+    public function type()
+    {
+        return $this->belongsTo(EventType::class);
+    }
+
+    /**
+     * Get the options for generating the slug.
+     */
     /**
      * Get the options for generating the slug.
      */

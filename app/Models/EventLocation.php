@@ -16,6 +16,11 @@ class EventLocation extends Model
         'lng'
     ];
 
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
+
     /**
      * Get the options for generating the slug.
      */

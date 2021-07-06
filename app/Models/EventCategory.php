@@ -14,6 +14,11 @@ class EventCategory extends Model
         'name',
     ];
 
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
+
     /**
      * Get the options for generating the slug.
      */

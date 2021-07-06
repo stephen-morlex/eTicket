@@ -17,8 +17,8 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->datetime('started_at');
-            $table->datetime('ended_at');
+            $table->datetime('started_at')->nullable();
+            $table->datetime('ended_at')->nullable();
             $table->text('description');
             $table->foreignId('event_category_id')->nullable()->constrained();
             $table->foreignId('event_location_id')->nullable()->onUpdate('cascade');
