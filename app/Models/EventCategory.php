@@ -14,7 +14,6 @@ class EventCategory extends Model
         'name',
     ];
 
-
     /**
      * Get the options for generating the slug.
      */

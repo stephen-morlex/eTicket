@@ -2,10 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\EventCategoryResource\Pages;
-use App\Filament\Resources\EventCategoryResource\RelationManagers;
+use App\Filament\Resources\EventTypeResource\Pages;
+use App\Filament\Resources\EventTypeResource\RelationManagers;
 use App\Filament\Roles;
-use App\Models\EventCategory;
 use Filament\Resources\Forms\Components;
 use Filament\Resources\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,17 +12,22 @@ use Filament\Resources\Tables\Columns;
 use Filament\Resources\Tables\Filter;
 use Filament\Resources\Tables\Table;
 
-class EventCategoryResource extends Resource
+class EventTypeResource extends Resource
 {
     public static $icon = 'heroicon-o-collection';
-    public static $model = EventCategory::class;
+
     public static function form(Form $form)
     {
         return $form
             ->schema([
                 Components\TextInput::make('name')->autofocus()->required()->placeholder('Enter Event Category...'),
-            ])
-            ->columns(1);
+                Components\Toggle::make('is_active')
+                    ->autofocus() // Autofocus the field.
+                    ->inline() // Render the toggle inline with its label.
+                    // ->offIcon($icon) // Set the icon that should be displayed when the toggle is off.
+                    // ->onIcon($icon) // Set the icon that should be displayed when the toggle is on.
+                    ->stacked(),
+            ]);
     }
 
     public static function table(Table $table)
@@ -34,8 +38,7 @@ class EventCategoryResource extends Resource
                 Columns\Boolean::make('is_active')->label('Status'),
             ])
             ->filters([
-                // Filter::make('organizations', fn ($query) => $query->where('type', 'organization')),
-                Filter::make('active', fn ($query) => $query->where('is_active', true)),
+                //
             ]);
     }
 
@@ -49,17 +52,9 @@ class EventCategoryResource extends Resource
     public static function routes()
     {
         return [
-            Pages\ListEventCategories::routeTo('/', 'index'),
-            Pages\CreateEventCategory::routeTo('/create', 'create'),
-            Pages\EditEventCategory::routeTo('/{record}/edit', 'edit'),
-            Pages\SortEventCategory::routeTo('/sort', 'sort'),
-        ];
-    }
-
-    public static function authorization()
-    {
-        return [
-            Roles\Organiser::deny(),
+            Pages\ListEventTypes::routeTo('/', 'index'),
+            Pages\CreateEventType::routeTo('/create', 'create'),
+            Pages\EditEventType::routeTo('/{record}/edit', 'edit'),
         ];
     }
 }

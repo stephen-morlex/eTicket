@@ -15,6 +15,11 @@ class CreateEventLocationsTable extends Migration
     {
         Schema::create('event_locations', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('slug');
+            $table->decimal('lat', 10, 8)->nullable();
+            $table->decimal('lng', 11, 8)->nullable();
+            $table->boolean('is_active')->default(0);
             $table->timestamps();
         });
     }
